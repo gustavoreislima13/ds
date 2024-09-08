@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/login.css">
+    <title>Porto Seguro</title>
+</head>
+<body>
+ <div class="wrapper">
+    <nav class="nav">
+        <div class="nav-logo">
+            <img src="./imagens/logo-porto33.png" alt="">
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="./index.html" class="link active">Home</a></li>
+                <li><a href="./news.html" class="link">Serviços</a></li>
+                <li><a href="./contact.html" class="link">Contato</a></li>
+            </ul>
+        </div>
+        <div class="nav-button"> </div>
+        <div class="nav-menu-btn">
+            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+        </div>
+    </nav>
+
+    <div class="form-box">
+        <div class="login-container" id="login">
+            <div class="top">
+                <span>Já tem conta? <a href="#" onclick="register()">Sign Up</a></span>
+                <header>Login</header>
+            </div>
+            <form onsubmit="return validateLoginForm()">
+                <div class="input-box">
+                    <input type="text" class="input-field" placeholder="Email" id="login-email">
+                    <i class="bx bx-user"></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" class="input-field" placeholder="Senha" id="login-password">
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+                <div class="input-box"> 
+                    <input type="submit" class="submit" value="Login">
+                </div>
+            </form>
+            <div class="two-col">
+                <div class="one">
+                    <input type="checkbox" id="login-check">
+                    <label for="login-check"> Lembre de min</label>
+                </div>
+                <div class="two">
+                    <label><a href="./dashboard.html">Esqueceu a senha?</a></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="register-container" id="register">
+            <div class="top">
+                <span>Já tem conta? <a href="#" onclick="login()">Login</a></span>
+                <header>Cadastra</header>
+            </div>
+            <form onsubmit="return validateRegisterForm()">
+                <div class="two-forms">
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Nome">
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Sobrenome">
+                        <i class="bx bx-user"></i>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <input type="text" class="input-field" placeholder="Email" id="register-email">
+                    <i class="bx bx-envelope"></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" class="input-field" placeholder="Senha" id="register-password">
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+                <div class="input-box">
+                    <input type="submit" class="submit" value="Cadastra">
+                </div>
+            </form>
+            <div class="two-col">
+                <div class="one">
+                    <input type="checkbox" id="register-check">
+                    <label for="register-check">Lembre de min</label>
+                </div>
+                <div class="two">
+                    <label><a href="#">Tremos e condiçoes</a></label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   
+
+<script>
+    function myMenuFunction() {
+        var i = document.getElementById("navMenu");
+        if(i.className === "nav-menu") {
+            i.className += " responsive";
+        } else {
+            i.className = "nav-menu";
+        }
+    }
+
+    function login() {
+        var x = document.getElementById("login");
+        var y = document.getElementById("register");
+        x.style.left = "4px";
+        y.style.right = "-520px";
+        x.style.opacity = 1;
+        y.style.opacity = 0;
+    }
+
+    function register() {
+        var x = document.getElementById("login");
+        var y = document.getElementById("register");
+        x.style.left = "-510px";
+        y.style.right = "5px";
+        x.style.opacity = 0;
+        y.style.opacity = 1;
+    }
+
+    function validateLoginForm() {
+        var email = document.getElementById("login-email").value;
+        var password = document.getElementById("login-password").value;
+        if (!email.includes("@")) {
+            alert("Por favor, insira um email válido.");
+            return false;
+        }
+        if (!/[A-Z]/.test(password)) {
+            alert("A senha deve conter pelo menos uma letra maiúscula.");
+            return false;
+        }
+        window.location.href = "./dashboard.html";
+        return false; 
+    }
+
+    function validateRegisterForm() {
+        var email = document.getElementById("register-email").value;
+        var password = document.getElementById("register-password").value;
+        if (!email.includes("@")) {
+            alert("Por favor, insira um email válido.");
+            return false;
+        }
+        if (!/[A-Z]/.test(password)) {
+            alert("A senha deve conter pelo menos uma letra maiúscula.");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+</body>
+</html>
